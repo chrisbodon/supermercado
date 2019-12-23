@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
 <%@ include file="/includes/header.jsp" %>   
+    	
 	
 	<a href="seguridad/productos?accion=formulario">Nuevo Producto</a>
 	
@@ -22,5 +23,7 @@
             </c:forEach>	
         </tbody>    
     </table>
+	
+	
 
 <%@ include file="/includes/footer.jsp" %> 

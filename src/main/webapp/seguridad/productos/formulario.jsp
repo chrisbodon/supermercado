@@ -4,7 +4,6 @@
     	
 	<h1>FORMULARIO</h1>
 	
-
 	<form action="seguridad/productos" method="post">
 	
 		
@@ -12,6 +11,11 @@
 		<br>
 		<label>Nombre:</label>
 		<input type="text" name="nombre" value="${producto.nombre}">
+		
+		<br>
+		
+		<label>Descuento:</label>
+		<input type="text" name="descuento" value="${producto.descuento}">
 		
 		<br>
 		

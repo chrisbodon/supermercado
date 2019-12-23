@@ -93,5 +93,4 @@ public class Producto {
 		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", imagen=" + imagen
 				+ ", descripcion=" + descripcion + ", descuento=" + descuento + "]";
 	}
-
 }

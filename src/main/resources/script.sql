@@ -24,38 +24,36 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `nombre` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre` (`nombre`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla supermercado.producto: ~4 rows (aproximadamente)
 DELETE FROM `producto`;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
 INSERT INTO `producto` (`id`, `nombre`) VALUES
-	(2, 'cafe'),
 	(8, 'donetes'),
-	(1, 'leche desnatada'),
-	(3, 'tortilla de patatas');
+	(17, 'donetes dobelÃ±s'),
+	(12, 'donetes2'),
+	(10, 'galletas3');
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
+
+-- Volcando estructura para tabla supermercado.usuario
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL DEFAULT '0',
+  `contrasenia` varchar(50) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nombre` (`nombre`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- Volcando datos para la tabla supermercado.usuario: ~0 rows (aproximadamente)
+DELETE FROM `usuario`;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` (`id`, `nombre`, `contrasenia`) VALUES
+	(1, 'admin', '123456'),
+	(4, 'Dolores', '56789');
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-
-
-/*   SQLs para CRUD de PRODUCTOS */
-
-
--- insertar nuevo producto; id autoincremental
-
-INSERT INTO producto ( nombre) VALUES ('donetes');
-
-
--- eliminar producto
-DELETE FROM producto WHERE id = 4 ;
-
--- modificar un producto
-UPDATE producto SET nombre = 'leche desnatada' WHERE id = 1;
-
-
--- obtener todos los productos
-SELECT id, nombre FROM producto ORDER BY id DESC LIMIT 500;
-

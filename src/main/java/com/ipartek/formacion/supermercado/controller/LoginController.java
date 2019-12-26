@@ -8,19 +8,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
+import com.ipartek.formacion.supermercado.modelo.dao.UsuarioDAO;
+import com.ipartek.formacion.supermercado.modelo.pojo.Usuario;
+
 /**
  * Servlet implementation class LoginController
  */
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
-	
-	
+
 	private static final long serialVersionUID = 1L;
-	private static final String USUARIO = "admin";
-	private static final String PASSWORD = "admin";
-       
+	private final static Logger LOG = Logger.getLogger(LoginController.class);
 
-
+	private static UsuarioDAO usuarioDao = UsuarioDAO.getInstance();
+	
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -33,17 +37,20 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//TODO POJO y DAO Usuario
 		String view = "login.jsp";
 		
 		String nombre = request.getParameter("nombre");
 		String pass = request.getParameter("contrasenya");
 		
 		try {
-			if ( USUARIO.equals(nombre) && PASSWORD.equals(pass) ) {
+			
+			Usuario usuario = usuarioDao.exist(nombre, pass);
+			
+			if ( usuario != null ) {
 				
+				LOG.info("login correcto " + usuario);
 				HttpSession session = request.getSession();
-				session.setAttribute("usuarioLogeado", "Fulanito");
+				session.setAttribute("usuarioLogeado", usuario );
 				session.setMaxInactiveInterval(60*3); // 3min
 				
 				view = "seguridad/index.jsp";
@@ -54,10 +61,7 @@ public class LoginController extends HttpServlet {
 				
 			}
 		}catch (Exception e) {
-			
-			//TODO traza de log
-			e.printStackTrace();
-			
+			LOG.error(e);			
 		}finally {
 			
 			request.getRequestDispatcher(view).forward(request, response);

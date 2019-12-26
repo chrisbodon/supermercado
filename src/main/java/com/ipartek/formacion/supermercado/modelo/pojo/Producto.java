@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 
 public class Producto {
 
@@ -26,8 +27,7 @@ public class Producto {
 	
 	private String descripcion;
 	
-	@Min(0)
-	@Max(100)	
+	@Range(min = 0, max= 100)
 	private int descuento;
 	
 	public Producto() {

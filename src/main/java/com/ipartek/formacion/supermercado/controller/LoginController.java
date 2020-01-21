@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 import com.ipartek.formacion.supermercado.modelo.dao.UsuarioDAO;
+import com.ipartek.formacion.supermercado.modelo.pojo.Rol;
 import com.ipartek.formacion.supermercado.modelo.pojo.Usuario;
 
 /**
@@ -53,7 +54,14 @@ public class LoginController extends HttpServlet {
 				session.setAttribute("usuarioLogeado", usuario );
 				session.setMaxInactiveInterval(60*3); // 3min
 				
-				view = "seguridad/index.jsp";
+				if ( usuario.getRol().getId() == Rol.ROL_ADMIN ) {
+				
+					view = "seguridad/index.jsp";   // accedemos la BACK-OFFICE
+					
+				}else {
+					
+					view = "mipanel/index.jsp";    // accedemos la FRONT-OFFICE
+				}	
 				
 			}else {
 				

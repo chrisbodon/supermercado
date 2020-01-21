@@ -15,12 +15,15 @@ public class Usuario {
 	@NotBlank
 	@Size( min = 2, max = 50)
 	private String contrasenia;
+		
+	private Rol rol;
 
 	public Usuario() {
 		super();
 		this.id = 0;
 		this.nombre = "";
 		this.contrasenia = "";
+		this.rol = new Rol();
 	}
 
 	public int getId() {
@@ -47,10 +50,19 @@ public class Usuario {
 		this.contrasenia = contrasenia;
 	}
 
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nombre=" + nombre + ", contrasenia=" + contrasenia + "]";
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", contrasenia=" + contrasenia + ", rol=" + rol + "]";
 	}
-	
+
+
 	
 }

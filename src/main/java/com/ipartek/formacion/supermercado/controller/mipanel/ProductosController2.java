@@ -1,4 +1,4 @@
-package com.ipartek.formacion.supermercado.controller.seguridad;
+package com.ipartek.formacion.supermercado.controller.mipanel;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,8 +25,8 @@ import com.ipartek.formacion.supermercado.modelo.pojo.Usuario;
 /**
  * Servlet implementation class ProductosController
  */
-@WebServlet("/seguridad/productos")
-public class ProductosController extends HttpServlet {
+@WebServlet("/mipanel/productos")
+public class ProductosController2 extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW_TABLA = "productos/index.jsp";

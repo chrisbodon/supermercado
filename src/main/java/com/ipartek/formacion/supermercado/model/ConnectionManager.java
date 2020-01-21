@@ -5,8 +5,13 @@ import java.sql.Connection;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.apache.log4j.Logger;
+
+import com.ipartek.formacion.supermercado.controller.LoginController;
+
 public class ConnectionManager {
 
+	private final static Logger LOG = Logger.getLogger(ConnectionManager.class);
 	private static Connection conn;
 
 	public static Connection getConnection() {
@@ -25,7 +30,7 @@ public class ConnectionManager {
 
 		} catch (Exception e) {
 
-			e.printStackTrace();
+			LOG.fatal(e);
 		}
 
 		return conn;

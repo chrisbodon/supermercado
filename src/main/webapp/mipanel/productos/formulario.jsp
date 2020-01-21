@@ -4,7 +4,7 @@
     	
 	<h1>FORMULARIO</h1>
 	
-	<form action="seguridad/productos" method="post" class="mb-4">
+	<form action="mipanel/productos" method="post" class="mb-4">
 		
 		<div class="form-group">
 			<label>Nombre:</label>
@@ -15,15 +15,7 @@
 			<label>Descuento:</label>
 			<input type="number" min="0" max="100" name="descuento" value="${producto.descuento}" class="form-control">
 		</div>	
-		
-		<div class="form-group">		
-			<label>Usuario</label>
-			<select name="usuarioId" class="custom-select">
-				<c:forEach items="${usuarios}" var="u">
-					<option value="${u.id}"  ${(u.id eq producto.usuario.id)?"selected":""} >${u.nombre}</option>	
-				</c:forEach>
-			</select>
-		</div>
+
 		
 		<input type="hidden" name="id" value="${producto.id}">
 		<input type="hidden" name="accion" value="guardar">
@@ -57,7 +49,7 @@
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <a class="btn btn-danger" href="seguridad/productos?id=${producto.id}&accion=eliminar">Eliminar</a>
+			        <a class="btn btn-danger" href="mipanel/productos?id=${producto.id}&accion=eliminar">Eliminar</a>
 			      </div>
 			    </div>
 			  </div>
